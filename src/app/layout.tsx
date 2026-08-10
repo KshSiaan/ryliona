@@ -1,15 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+import { cn } from "@/lib/utils";
+import localFont from "next/font/local";
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
+  variable: "--font-sans",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const blade = localFont({
+  src: "/font/carbon.woff2",
+  variable: "--font-blade",
+});
+const nerik = localFont({
+  src: "/font/Nerik-normal.woff2",
+  variable: "--font-nerik",
 });
 
 export const metadata: Metadata = {
@@ -21,7 +26,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={cn(
+        "h-full",
+        "antialiased",
+        "font-sans",
+        spaceGrotesk.className,
+        blade.variable,
+        nerik.variable,
+      )}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
