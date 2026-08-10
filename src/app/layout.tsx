@@ -6,6 +6,7 @@ import localFont from "next/font/local";
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-sans",
+  weight: ["400", "500", "600", "700"],
 });
 
 const blade = localFont({

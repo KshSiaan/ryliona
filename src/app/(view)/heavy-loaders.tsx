@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
 
-const MotionImage = motion(Image);
+const MotionImage = motion.create(Image);
 
 export default function HeavyLoaders() {
   return (
@@ -32,7 +32,7 @@ export default function HeavyLoaders() {
         priority
         src="/liha.svg"
         alt="Liha"
-        className="w-lg absolute right-24 bottom-0"
+        className="w-lg absolute right-24 bottom-0 -scale-x-100"
         animate={{
           rotate: [0, 1, 0, -1, 0],
         }}
