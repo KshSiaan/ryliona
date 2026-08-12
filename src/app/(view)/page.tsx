@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { LiquidMetalButton } from "@/components/core/cta";
 import SplitText from "@/components/SplitText";
+import { Highlighter } from "@/components/ui/highlighter";
 export default function Home() {
   return (
     <div className="h-dvh p-2 bg-foreground!">
@@ -38,11 +39,12 @@ export default function Home() {
           </Suspense>
           <div className="z-20 h-full w-full absolute top-0 left-0 flex flex-col justify-around items-center">
             <div className="space-y-6 flex flex-col items-center">
-              <div className="flex flex-col">
+              <div className="flex flex-col gap-4">
                 <SplitText
-                  text="What’s the biggest challenge standing between"
-                  className="text-2xl font-semibold text-center"
+                  text="Where could your business go"
+                  className="text-4xl font-semibold text-center "
                   delay={50}
+                  tag="h1"
                   duration={1.25}
                   ease="power3.out"
                   splitType="words"
@@ -52,21 +54,33 @@ export default function Home() {
                   rootMargin="-100px"
                   textAlign="center"
                 />
-                <SplitText
-                  text="you and your goals?"
-                  className="text-2xl font-semibold text-center"
-                  delay={50}
-                  duration={1.25}
-                  ease="power3.out"
-                  splitType="chars"
-                  from={{ opacity: 0, y: 40 }}
-                  to={{ opacity: 1, y: 0 }}
-                  threshold={0.1}
-                  rootMargin="-100px"
-                  textAlign="center"
-                />
+                <h1 className="text-4xl font-semibold text-center px-4 leading-tight">
+                  <Highlighter
+                    action="underline"
+                    color="#7033ff"
+                    strokeWidth={2}
+                  >
+                    if
+                  </Highlighter>{" "}
+                  <Highlighter
+                    action="highlight"
+                    color="#c4b5fd"
+                    strokeWidth={2}
+                  >
+                    Technology
+                  </Highlighter>{" "}
+                  <Highlighter
+                    action="underline"
+                    color="#7033ff"
+                    strokeWidth={2}
+                  >
+                    worked for you?
+                  </Highlighter>
+                </h1>
               </div>
-              <p className="text-xl font-bold text-center">Let us Help You</p>
+              <p className="text-xl font-bold text-center">
+                Let's make that possible
+              </p>
             </div>
             <div className="flex items-center gap-8">
               <LiquidMetalButton label="See us in Action" />
