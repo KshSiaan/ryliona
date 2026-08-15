@@ -24,11 +24,11 @@ import { usePathname } from "next/navigation";
 import { useFullscreen } from "react-haiku";
 import { useBatteryStatus } from "react-haiku";
 const navItems = [
-  { label: "Overview", icon: Info },
-  { label: "Media", icon: Image03Icon },
+  { label: "Who we are", icon: Info },
+  { label: "Portfolio", icon: Image03Icon },
   { label: "Home", icon: Home09Icon },
-  { label: "Community", icon: UserGroup02Icon },
-  { label: "Messages", icon: Chat01Icon },
+  { label: "Team", icon: UserGroup02Icon },
+  { label: "Contact", icon: Chat01Icon },
 ];
 export default function Navbar() {
   const currentRoute = usePathname();
@@ -115,7 +115,7 @@ export default function Navbar() {
 
         <div className="sm:flex gap-8 hidden">
           <Link href="/" className="text-background text-nowrap text-sm">
-            Who are we?
+            Team
           </Link>
           <Link href="/" className="text-background text-nowrap text-sm">
             Lets Talk
@@ -176,13 +176,6 @@ export default function Navbar() {
               </button>
             );
           })}
-          {/* <button
-            type="button"
-            aria-label="Create new"
-            className="ml-1 grid size-11 shrink-0 place-items-center rounded-2xl bg-background text-foreground shadow-sm transition hover:bg-background/90 active:scale-95"
-          >
-            <Plus className="size-5" strokeWidth={2.25} aria-hidden="true" />
-          </button> */}
         </div>
       </nav>
     </>
