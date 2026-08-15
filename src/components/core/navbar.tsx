@@ -93,34 +93,36 @@ export default function Navbar() {
           })}
         </div>
 
-        <h1
-          className={cn("text-xl sm:text-4xl font-nerik text-primary")}
-          ref={(el) => {
-            if (el) {
-              PowerGlitch.glitch(el, {
-                playMode: "always",
-                createContainers: true,
-                hideOverflow: true,
-                timing: {
-                  duration: 6000,
-                  iterations: Infinity,
-                  easing: "ease-in-out",
-                },
-                glitchTimeSpan: { start: 0.4, end: 0.5 },
-                shake: { velocity: 0, amplitudeX: 0.2, amplitudeY: 0.2 },
-                slice: {
-                  count: 1,
-                  velocity: 50,
-                  minHeight: 0.02,
-                  maxHeight: 0.15,
-                  hueRotate: true,
-                },
-              });
-            }
-          }}
-        >
-          RYLIONA
-        </h1>
+        <Link href="/">
+          <h1
+            className={cn("text-xl sm:text-4xl font-nerik text-primary")}
+            ref={(el) => {
+              if (el) {
+                PowerGlitch.glitch(el, {
+                  playMode: "always",
+                  createContainers: true,
+                  hideOverflow: true,
+                  timing: {
+                    duration: 6000,
+                    iterations: Infinity,
+                    easing: "ease-in-out",
+                  },
+                  glitchTimeSpan: { start: 0.4, end: 0.5 },
+                  shake: { velocity: 0, amplitudeX: 0.2, amplitudeY: 0.2 },
+                  slice: {
+                    count: 1,
+                    velocity: 50,
+                    minHeight: 0.02,
+                    maxHeight: 0.15,
+                    hueRotate: true,
+                  },
+                });
+              }
+            }}
+          >
+            RYLIONA
+          </h1>
+        </Link>
 
         <div className="sm:flex gap-8 hidden">
           {navItems.slice(3, 5).map(({ label, href }) => {
