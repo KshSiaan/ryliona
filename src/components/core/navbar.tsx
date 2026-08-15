@@ -11,10 +11,22 @@ import {
   Chat01Icon,
   Home09Icon,
   Image03Icon,
-  InformationCircleIcon,
+  Info,
   UserGroup02Icon,
 } from "@hugeicons/core-free-icons";
+import { usePathname } from "next/navigation";
+const navItems = [
+  { label: "Overview", icon: Info },
+  { label: "Media", icon: Image03Icon },
+  { label: "Home", icon: Home09Icon },
+  { label: "Community", icon: UserGroup02Icon },
+  { label: "Messages", icon: Chat01Icon },
+];
 export default function Navbar() {
+  // const currentRoute = usePathname();
+
+  const [active, setActive] = React.useState<string | null>(null);
+
   return (
     <>
       {" "}
@@ -65,42 +77,60 @@ export default function Navbar() {
           </Link>
         </div>
       </nav>
-      <nav className="fixed bottom-0 z-40 w-full bg-foreground p-2 h-14 flex justify-around items-center">
-        <Button
-          variant="ghost"
-          size="icon-lg"
-          className="text-background hover:bg-transparent! hover:text-background"
-        >
-          <HugeiconsIcon icon={InformationCircleIcon} className="size-6" />
-        </Button>
-        <Button
-          variant="ghost"
-          size="icon-lg"
-          className="text-background hover:bg-transparent! hover:text-background"
-        >
-          <HugeiconsIcon icon={Image03Icon} className="size-6" />
-        </Button>
-        <Button
-          variant="ghost"
-          size="icon-lg"
-          className="text-background hover:bg-transparent! hover:text-background"
-        >
-          <HugeiconsIcon icon={Home09Icon} className="size-8" />
-        </Button>
-        <Button
-          variant="ghost"
-          size="icon-lg"
-          className="text-background hover:bg-transparent! hover:text-background"
-        >
-          <HugeiconsIcon icon={UserGroup02Icon} className="size-6" />
-        </Button>
-        <Button
-          variant="ghost"
-          size="icon-lg"
-          className="text-background hover:bg-transparent! hover:text-background"
-        >
-          <HugeiconsIcon icon={Chat01Icon} className="size-6" />
-        </Button>
+      <nav
+        aria-label="Primary navigation"
+        className="fixed inset-x-0 bottom-0 z-40 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:hidden"
+      >
+        <div className="mx-auto flex h-[4.5rem] max-w-lg items-center justify-between rounded-[1.75rem] border border-border/80 bg-foreground px-2 shadow-2xl shadow-foreground/20 lg:max-w-xl lg:px-3">
+          {navItems.map(({ label, icon: Icon }) => {
+            const isActive = active === label;
+            const isHome = label === "Home";
+
+            return (
+              <button
+                key={label}
+                type="button"
+                aria-current={isActive ? "page" : undefined}
+                onClick={() => setActive(label)}
+                className={`group relative flex min-w-14 flex-1 flex-col items-center justify-center gap-1 rounded-2xl py-2 text-[10px] font-medium transition-all duration-200 active:scale-95 ${
+                  isActive
+                    ? "text-background"
+                    : "text-background/50 hover:text-background/85"
+                }`}
+              >
+                {isHome && (
+                  <span
+                    aria-hidden="true"
+                    className={`absolute -top-7 grid size-14 place-items-center rounded-full border-[5px] border-muted/40 bg-background text-foreground shadow-lg transition-transform duration-200 ${isActive ? "scale-105" : "group-hover:scale-105"}`}
+                  >
+                    <HugeiconsIcon
+                      icon={Icon}
+                      className="size-6"
+                      strokeWidth={2.25}
+                    />
+                  </span>
+                )}
+                <HugeiconsIcon
+                  icon={Icon}
+                  className={`size-[19px] transition-transform duration-200 ${isHome ? "invisible" : isActive ? "-translate-y-0.5" : ""}`}
+                  strokeWidth={isActive ? 2.25 : 1.8}
+                  aria-hidden="true"
+                />
+                <span className={isHome ? "mt-0.5" : ""}>{label}</span>
+                {isActive && !isHome && (
+                  <span className="absolute bottom-1 size-1 rounded-full bg-background" />
+                )}
+              </button>
+            );
+          })}
+          {/* <button
+            type="button"
+            aria-label="Create new"
+            className="ml-1 grid size-11 shrink-0 place-items-center rounded-2xl bg-background text-foreground shadow-sm transition hover:bg-background/90 active:scale-95"
+          >
+            <Plus className="size-5" strokeWidth={2.25} aria-hidden="true" />
+          </button> */}
+        </div>
       </nav>
     </>
   );
