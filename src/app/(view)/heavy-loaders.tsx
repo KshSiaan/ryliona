@@ -24,11 +24,10 @@ export default function HeavyLoaders() {
         className="
           absolute
           left-1/2
-          
           bottom-28
           size-[18rem]
           -translate-x-1/2
-          opacity-30
+          opacity-10
           object-contain
           select-none
 
