@@ -1,13 +1,14 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { PowerGlitch } from "powerglitch";
 import { Backlight } from "../ui/backlight";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
+  ArrowExpandIcon,
   Chat01Icon,
   Home09Icon,
   Image03Icon,
@@ -15,6 +16,7 @@ import {
   UserGroup02Icon,
 } from "@hugeicons/core-free-icons";
 import { usePathname } from "next/navigation";
+import { useFullscreen } from "react-haiku";
 const navItems = [
   { label: "Overview", icon: Info },
   { label: "Media", icon: Image03Icon },
@@ -23,13 +25,15 @@ const navItems = [
   { label: "Messages", icon: Chat01Icon },
 ];
 export default function Navbar() {
-  // const currentRoute = usePathname();
-
+  const currentRoute = usePathname();
+  const documentRef = useRef<HTMLElement | null>(null);
   const [active, setActive] = React.useState<string | null>(null);
-
+  useEffect(() => {
+    documentRef.current = document.documentElement;
+  }, []);
+  const { toggleFullscreen } = useFullscreen(documentRef);
   return (
     <>
-      {" "}
       <nav className="flex corner-b-squircle z-40 rounded-b-full h-16 w-min fixed top-0 left-1/2 -translate-x-1/2 items-center justify-between gap-8 px-8 mx-auto bg-foreground overflow-hidden">
         <div className="sm:flex gap-8 hidden">
           <Link href="/" className="text-background text-nowrap text-sm">
@@ -68,6 +72,7 @@ export default function Navbar() {
         >
           RYLIONA
         </h1>
+
         <div className="sm:flex gap-8 hidden">
           <Link href="/" className="text-background text-nowrap text-sm">
             Who are we?
@@ -77,6 +82,14 @@ export default function Navbar() {
           </Link>
         </div>
       </nav>
+      <Button
+        size="icon"
+        variant="link"
+        className="fixed z-40 top-4 right-4 sm:hidden"
+        onClick={toggleFullscreen}
+      >
+        <HugeiconsIcon icon={ArrowExpandIcon} />
+      </Button>
       <nav
         aria-label="Primary navigation"
         className="fixed inset-x-0 bottom-0 z-40 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:hidden"
