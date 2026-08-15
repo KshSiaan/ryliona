@@ -63,7 +63,7 @@ export default function Home() {
                 </p>
               </Highlighter>
             </div>
-            <div className="flex items-center gap-8">
+            <div className="flex items-center gap-8 mb-6">
               <LiquidMetalButton label="See us in Action" />
               <Button
                 size="lg"
