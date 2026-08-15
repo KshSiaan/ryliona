@@ -160,40 +160,41 @@ export default function Navbar() {
             const isHome = label === "Home";
 
             return (
-              <button
-                key={label}
-                type="button"
-                aria-current={isActive ? "page" : undefined}
-                onClick={() => setActive(label)}
-                className={`group relative flex min-w-14 flex-1 flex-col items-center justify-center gap-1 rounded-2xl py-2 text-[10px] font-medium transition-all duration-200 active:scale-95 ${
-                  isActive
-                    ? "text-background"
-                    : "text-background/50 hover:text-background/85"
-                }`}
-              >
-                {isHome && (
-                  <span
+              <Link key={label} href={isHome ? "/" : `/${label.toLowerCase()}`}>
+                <button
+                  type="button"
+                  aria-current={isActive ? "page" : undefined}
+                  onClick={() => setActive(label)}
+                  className={`group relative flex min-w-14 flex-1 flex-col items-center justify-center gap-1 rounded-2xl py-2 text-[10px] font-medium transition-all duration-200 active:scale-95 ${
+                    isActive
+                      ? "text-background"
+                      : "text-background/50 hover:text-background/85"
+                  }`}
+                >
+                  {isHome && (
+                    <span
+                      aria-hidden="true"
+                      className={`absolute -top-7 grid size-14 place-items-center rounded-full border-[5px] border-muted/40 bg-background text-foreground shadow-lg transition-transform duration-200 ${isActive ? "scale-105" : "group-hover:scale-105"}`}
+                    >
+                      <HugeiconsIcon
+                        icon={Icon}
+                        className="size-6"
+                        strokeWidth={2.25}
+                      />
+                    </span>
+                  )}
+                  <HugeiconsIcon
+                    icon={Icon}
+                    className={`size-[19px] transition-transform duration-200 ${isHome ? "invisible" : isActive ? "-translate-y-0.5" : ""}`}
+                    strokeWidth={isActive ? 2.25 : 1.8}
                     aria-hidden="true"
-                    className={`absolute -top-7 grid size-14 place-items-center rounded-full border-[5px] border-muted/40 bg-background text-foreground shadow-lg transition-transform duration-200 ${isActive ? "scale-105" : "group-hover:scale-105"}`}
-                  >
-                    <HugeiconsIcon
-                      icon={Icon}
-                      className="size-6"
-                      strokeWidth={2.25}
-                    />
-                  </span>
-                )}
-                <HugeiconsIcon
-                  icon={Icon}
-                  className={`size-[19px] transition-transform duration-200 ${isHome ? "invisible" : isActive ? "-translate-y-0.5" : ""}`}
-                  strokeWidth={isActive ? 2.25 : 1.8}
-                  aria-hidden="true"
-                />
-                <span className={isHome ? "mt-0.5" : ""}>{label}</span>
-                {isActive && !isHome && (
-                  <span className="absolute bottom-1 size-1 rounded-full bg-background" />
-                )}
-              </button>
+                  />
+                  <span className={isHome ? "mt-0.5" : ""}>{label}</span>
+                  {isActive && !isHome && (
+                    <span className="absolute bottom-1 size-1 rounded-full bg-background" />
+                  )}
+                </button>
+              </Link>
             );
           })}
         </div>
