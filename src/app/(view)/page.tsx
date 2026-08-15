@@ -38,7 +38,7 @@ export default function Home() {
           </Suspense>
           <div className="z-20 h-full w-full absolute top-0 left-0 flex flex-col justify-around items-center">
             <div className="space-y-6 flex flex-col items-center">
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-2 sm:gap-4">
                 <SplitText
                   text="Where could your business go"
                   className="text-xl sm:text-4xl font-semibold text-center "
