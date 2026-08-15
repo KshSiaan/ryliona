@@ -9,6 +9,7 @@ import Link from "next/link";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
   ArrowExpandIcon,
+  BatteryLowIcon,
   Chat01Icon,
   Home09Icon,
   Image03Icon,
@@ -17,6 +18,7 @@ import {
 } from "@hugeicons/core-free-icons";
 import { usePathname } from "next/navigation";
 import { useFullscreen } from "react-haiku";
+import { useBatteryStatus } from "react-haiku";
 const navItems = [
   { label: "Overview", icon: Info },
   { label: "Media", icon: Image03Icon },
@@ -32,9 +34,15 @@ export default function Navbar() {
     documentRef.current = document.documentElement;
   }, []);
   const { toggleFullscreen } = useFullscreen(documentRef);
+  const { level, isCharging } = useBatteryStatus();
+
   return (
     <>
-      <nav className="flex corner-b-squircle z-40 rounded-b-full h-16 w-min fixed top-0 left-1/2 -translate-x-1/2 items-center justify-between gap-8 px-8 mx-auto bg-foreground overflow-hidden">
+      <div className="flex gap-2 items-center fixed top-4 left-4 z-40">
+        <HugeiconsIcon icon={BatteryLowIcon} className="text-destructive" />
+        <span className="text-sm text-destructive">{level}%</span>
+      </div>
+      <nav className="flex corner-b-squircle z-40 rounded-b-full h-12 sm:h-16 w-min fixed top-0 left-1/2 -translate-x-1/2 items-center justify-between gap-8 px-8 mx-auto bg-foreground overflow-hidden">
         <div className="sm:flex gap-8 hidden">
           <Link href="/" className="text-background text-nowrap text-sm">
             Who are we?
@@ -45,7 +53,7 @@ export default function Navbar() {
         </div>
 
         <h1
-          className={cn("text-4xl font-nerik text-primary")}
+          className={cn("text-xl sm:text-4xl font-nerik text-primary")}
           ref={(el) => {
             if (el) {
               PowerGlitch.glitch(el, {
