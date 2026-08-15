@@ -9,7 +9,11 @@ import Link from "next/link";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
   ArrowExpandIcon,
+  BatteryCharging01Icon,
+  BatteryEmptyIcon,
+  BatteryFullIcon,
   BatteryLowIcon,
+  BatteryMedium01Icon,
   Chat01Icon,
   Home09Icon,
   Image03Icon,
@@ -38,9 +42,37 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="flex gap-2 items-center fixed top-4 left-4 z-40">
-        <HugeiconsIcon icon={BatteryLowIcon} className="text-destructive" />
-        <span className="text-sm text-destructive">{level}%</span>
+      <div className="flex gap-2 items-center fixed top-4 left-4 z-40 sm:hidden ">
+        {isCharging ? (
+          <HugeiconsIcon
+            icon={BatteryCharging01Icon}
+            className="text-primary"
+          />
+        ) : level < 10 ? (
+          <HugeiconsIcon icon={BatteryEmptyIcon} className="text-destructive" />
+        ) : level < 30 ? (
+          <HugeiconsIcon icon={BatteryLowIcon} className="text-destructive" />
+        ) : level < 70 ? (
+          <HugeiconsIcon icon={BatteryMedium01Icon} className="text-primary" />
+        ) : (
+          <HugeiconsIcon icon={BatteryFullIcon} className="text-primary" />
+        )}
+        <span
+          className={cn(
+            "text-sm",
+            isCharging
+              ? "text-primary"
+              : level < 10
+                ? "text-destructive"
+                : level < 30
+                  ? "text-orange-500"
+                  : level < 70
+                    ? "text-teal-600"
+                    : "text-green-700",
+          )}
+        >
+          {level}%
+        </span>
       </div>
       <nav className="flex corner-b-squircle z-40 rounded-b-full h-12 sm:h-16 w-min fixed top-0 left-1/2 -translate-x-1/2 items-center justify-between gap-8 px-8 mx-auto bg-foreground overflow-hidden">
         <div className="sm:flex gap-8 hidden">
