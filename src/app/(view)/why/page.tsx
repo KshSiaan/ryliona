@@ -4,12 +4,12 @@ import Link from "next/link";
 
 export default function Page() {
   return (
-    <div className="h-dvh p-2 bg-foreground! relative!  overflow-hidden">
-      <main className="h-full w-full bg-background rounded-2xl overflow-hidden pt-18 flex flex-col justify-center items-center">
+    <div className="sm:h-dvh p-2 bg-foreground! relative! overflow-hidden ">
+      <main className="h-full w-full bg-background rounded-2xl overflow-hidden pt-18 flex flex-col justify-center items-center py-12">
         {/* <Suspense fallback={null}>
           <HeavyLoaders />
         </Suspense> */}
-        <div className="container border p-6 rounded-2xl">
+        <div className="container sm:border p-6 rounded-2xl mt-6 mb-24">
           <h1 className="text-xl font-bold text-center ">
             <span className="text-primary">Think about this</span>, The world is
             changing? are we?
