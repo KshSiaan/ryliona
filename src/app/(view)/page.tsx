@@ -41,7 +41,7 @@ export default function Home() {
               <div className="flex flex-col gap-4">
                 <SplitText
                   text="Where could your business go"
-                  className="text-4xl font-semibold text-center "
+                  className="text-xl sm:text-4xl font-semibold text-center "
                   delay={50}
                   tag="h1"
                   duration={1.25}
@@ -53,12 +53,12 @@ export default function Home() {
                   rootMargin="-100px"
                   textAlign="center"
                 />
-                <h1 className="text-4xl font-semibold text-center px-4 leading-tight">
+                <h1 className="text-xl sm:text-4xl font-semibold text-center px-4 leading-tight">
                   if Technology worked for you?
                 </h1>
               </div>
               <Highlighter action="underline">
-                <p className="text-xl font-bold text-center">
+                <p className="text-base sm:text-xl font-bold text-center">
                   Let's make that possible
                 </p>
               </Highlighter>
