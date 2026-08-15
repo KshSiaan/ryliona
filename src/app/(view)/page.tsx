@@ -2,7 +2,6 @@ import GradientWaves from "@/components/GradientWaves";
 
 import { Suspense } from "react";
 import HeavyLoaders from "./heavy-loaders";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { LiquidMetalButton } from "@/components/core/cta";
 import SplitText from "@/components/SplitText";
