@@ -155,12 +155,12 @@ export default function Navbar() {
         className="fixed inset-x-0 bottom-0 z-40 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:hidden"
       >
         <div className="mx-auto flex h-[4.5rem] max-w-lg items-center justify-between rounded-2xl border border-border/80 bg-foreground px-2 shadow-2xl shadow-foreground/20 lg:max-w-xl lg:px-3">
-          {navItems.map(({ label, icon: Icon }) => {
+          {navItems.map(({ label, icon: Icon, href }) => {
             const isActive = active === label;
             const isHome = label === "Home";
 
             return (
-              <Link key={label} href={isHome ? "/" : `/${label.toLowerCase()}`}>
+              <Link key={label} href={isHome ? "/" : href}>
                 <button
                   type="button"
                   aria-current={isActive ? "page" : undefined}
