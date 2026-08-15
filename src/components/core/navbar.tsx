@@ -9,7 +9,7 @@ import Link from "next/link";
 export default function Navbar() {
   return (
     <nav className="flex corner-b-squircle z-40 rounded-b-full h-16 w-min fixed top-0 left-1/2 -translate-x-1/2 items-center justify-between gap-8 px-8 mx-auto bg-foreground overflow-hidden">
-      <div className="flex gap-8">
+      <div className="sm:flex gap-8 hidden">
         <Link href="/" className="text-background text-nowrap text-sm">
           Who are we?
         </Link>
@@ -46,12 +46,14 @@ export default function Navbar() {
       >
         RYLIONA
       </h1>
-      <Link href="/" className="text-background text-nowrap text-sm">
-        Who are we?
-      </Link>
-      <Link href="/" className="text-background text-nowrap text-sm">
-        Lets Talk
-      </Link>
+      <div className="sm:flex gap-8 hidden">
+        <Link href="/" className="text-background text-nowrap text-sm">
+          Who are we?
+        </Link>
+        <Link href="/" className="text-background text-nowrap text-sm">
+          Lets Talk
+        </Link>
+      </div>
     </nav>
   );
 }
