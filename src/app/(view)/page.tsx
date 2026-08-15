@@ -10,7 +10,7 @@ import { Highlighter } from "@/components/ui/highlighter";
 export default function Home() {
   return (
     <div className="h-dvh p-2 bg-foreground!">
-      <header className="h-full w-full">
+      <header className="h-full w-full ">
         <div className="relative h-full w-full bg-background rounded-2xl overflow-hidden">
           <Suspense fallback={null}>
             <GradientWaves
@@ -55,38 +55,20 @@ export default function Home() {
                   textAlign="center"
                 />
                 <h1 className="text-4xl font-semibold text-center px-4 leading-tight">
-                  <Highlighter
-                    action="underline"
-                    color="#7033ff"
-                    strokeWidth={2}
-                  >
-                    if
-                  </Highlighter>{" "}
-                  <Highlighter
-                    action="highlight"
-                    color="#c4b5fd"
-                    strokeWidth={2}
-                  >
-                    Technology
-                  </Highlighter>{" "}
-                  <Highlighter
-                    action="underline"
-                    color="#7033ff"
-                    strokeWidth={2}
-                  >
-                    worked for you?
-                  </Highlighter>
+                  if Technology worked for you?
                 </h1>
               </div>
-              <p className="text-xl font-bold text-center">
-                Let's make that possible
-              </p>
+              <Highlighter action="underline">
+                <p className="text-xl font-bold text-center">
+                  Let's make that possible
+                </p>
+              </Highlighter>
             </div>
             <div className="flex items-center gap-8">
               <LiquidMetalButton label="See us in Action" />
               <Button
                 size="lg"
-                className=" h-11 px-8 rounded-full bg-transparent border-2 border-primary text-primary font-bold"
+                className=" h-11 px-8 rounded-full bg-transparent border-2 border-primary text-primary font-bold hover:bg-primary hover:text-background transition-all duration-300"
                 variant="outline"
               >
                 Lets Work
