@@ -24,11 +24,11 @@ import { usePathname } from "next/navigation";
 import { useFullscreen } from "react-haiku";
 import { useBatteryStatus } from "react-haiku";
 const navItems = [
-  { label: "Who we are", icon: Info },
-  { label: "Portfolio", icon: Image03Icon },
-  { label: "Home", icon: Home09Icon },
-  { label: "Team", icon: UserGroup02Icon },
-  { label: "Contact", icon: Chat01Icon },
+  { label: "Why us?", icon: Info, href: "/why" },
+  { label: "Portfolio", icon: Image03Icon, href: "/portfolio" },
+  { label: "Home", icon: Home09Icon, href: "/" },
+  { label: "Team", icon: UserGroup02Icon, href: "/team" },
+  { label: "Contact", icon: Chat01Icon, href: "/contact" },
 ];
 export default function Navbar() {
   const currentRoute = usePathname();
@@ -76,12 +76,21 @@ export default function Navbar() {
       </div>
       <nav className="flex corner-b-squircle z-40 rounded-b-full h-12 sm:h-16 w-min fixed top-0 left-1/2 -translate-x-1/2 items-center justify-between gap-8 px-8 mx-auto bg-foreground overflow-hidden">
         <div className="sm:flex gap-8 hidden">
-          <Link href="/" className="text-background text-nowrap text-sm">
-            Who are we?
-          </Link>
-          <Link href="/" className="text-background text-nowrap text-sm">
-            Portfolio
-          </Link>
+          {navItems.slice(0, 2).map(({ label, href }) => {
+            const isActive = currentRoute === href;
+            return (
+              <Link
+                href={href}
+                className={cn(
+                  "text-sm font-medium transition-colors duration-200 text-nowrap",
+                  isActive ? "text-primary" : "text-background",
+                )}
+                key={label}
+              >
+                {label}
+              </Link>
+            );
+          })}
         </div>
 
         <h1
@@ -114,12 +123,21 @@ export default function Navbar() {
         </h1>
 
         <div className="sm:flex gap-8 hidden">
-          <Link href="/" className="text-background text-nowrap text-sm">
-            Team
-          </Link>
-          <Link href="/" className="text-background text-nowrap text-sm">
-            Lets Talk
-          </Link>
+          {navItems.slice(3, 5).map(({ label, href }) => {
+            const isActive = currentRoute === href;
+            return (
+              <Link
+                href={href}
+                className={cn(
+                  "text-sm font-medium transition-colors duration-200 text-nowrap",
+                  isActive ? "text-primary" : "text-background",
+                )}
+                key={label}
+              >
+                {label}
+              </Link>
+            );
+          })}
         </div>
       </nav>
       <Button
