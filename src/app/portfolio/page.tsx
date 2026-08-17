@@ -4,6 +4,7 @@ import Link from "next/link";
 import AccordionGallery from "@/components/AccordionGallery";
 
 export default function Page() {
+  const h = window.innerHeight;
   const items = [
     {
       image: "https://picsum.photos/id/1015/900/1200",
@@ -20,40 +21,10 @@ export default function Page() {
       label: "Falls",
       link: "#",
     },
-    {
-      image: "https://picsum.photos/id/1043/900/1200",
-      label: "Harbour",
-      link: "#",
-    },
-    {
-      image: "https://picsum.photos/id/1044/900/1200",
-      label: "Skyline",
-      link: "#",
-    },
   ];
   return (
-    <main className="sm:h-dvh relative! flex justify-center items-center">
-      <AccordionGallery
-        items={items}
-        defaultIndex={2}
-        expandRatio={0.52}
-        trigger="hover"
-        accentColor="#ffffff"
-        overlayColor="#060010"
-        textColor="#ffffff"
-        grayscale
-        showLabels
-        duration={0.6}
-        ease="power3.out"
-        parallax={0.5}
-        tilt={8}
-        stagger={0.06}
-        // height={460}
-        className="h-full"
-        gap={10}
-        radius={16}
-        orientation="horizontal"
-      />
-    </main>
+    <section className="sm:h-dvh relative! flex justify-center items-center ">
+      <div className="w-full h-full flex justify-center items-center text-center"></div>
+    </section>
   );
 }
